@@ -1,5 +1,7 @@
 console.log('JS OK') 
 
+const cardsField = document.getElementById('cardsField');
+
 const membri = [
 	{
 		nome: "Wayne",
@@ -56,3 +58,27 @@ const membri = [
 		},
 	},
 ];
+
+console.log(membri);
+for (const membro of membri) {
+	console.table(membro.fullName());
+}
+
+let memberCard = '';
+
+for (let i = 0; i < membri.length; i++) {
+    const member = membri[i];
+    memberCard += `
+    <div class="col">
+                <div class="card">
+                    <img src=${member.immagine} class="card-img-top" alt="img">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${member.fullName()}</h5>
+                        <p class="card-text">${member.grado}</p>
+                    </div>
+                </div>
+    </div>
+    `
+}
+
+cardsField.innerHTML = memberCard;
